@@ -3,7 +3,7 @@ package Giorno2.SmartHome;
 public class Cellulare extends Dispositivo{
 	private int batteria; // 100
 	
-	public Cellulare(String nome, int consumo, int batteria) {
+	public Cellulare(String nome, int consumo) {
 		super(nome, consumo);
 		this.batteria = 100;
 	}
@@ -17,7 +17,7 @@ public class Cellulare extends Dispositivo{
 		int necessario = ore * getConsumo();
 		if (batteria >= necessario) {
 			batteria -= necessario;
-			System.out.println(getNome() + " usato per " + ore + " Batteria residua: " + necessario + " % ");
+			System.out.println(getNome() + " usato per " + ore + " ore. Batteria residua: " + batteria + " % ");
 		}else {
 			System.out.println("Non hai abbastanza energia");
 		}
