@@ -22,7 +22,7 @@ public class ToDoDao {
 
 	public static ArrayList<ToDo> findAll() {
 		String sql = "SELECT * FROM todolist";
-		ArrayList querylist = new ArrayList();
+		ArrayList<ToDo> querylist = new ArrayList<>();
 		try {
 			Connection conn = Database.getConnection();
 			PreparedStatement ps = conn.prepareStatement(sql);

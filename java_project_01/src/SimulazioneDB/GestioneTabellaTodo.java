@@ -29,6 +29,7 @@ public class GestioneTabellaTodo {
 		}
 	}
 
+	@SuppressWarnings("unchecked")
 	protected HashMap<String, Studente> leggiTabella() throws TabellaInesistenteException {
 		try {
 			FileInputStream fin = new FileInputStream(file);

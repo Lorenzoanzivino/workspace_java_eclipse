@@ -12,16 +12,21 @@ public class DAOStudenteMappa {
     private Map<String, Studente> mappa = new HashMap<>();
 
     
-    public boolean insert(Studente s) {
-        if (mappa.containsKey(s.getMatricola())) {
-            return false;
+    public void insert(Studente s) {
+    	if(s == null) {
+    		throw new RuntimeException("Studente nullo");
+    	}else if(s.getMatricola()== null) {
+    		throw new RuntimeException("Matricola Nulla");
+    	}else if (mappa.containsKey(s.getMatricola())) {
+            throw new RuntimeException("Studente già presente con matricola: " + s.getMatricola());
         }
         mappa.put(s.getMatricola(), s);
-        return true;
     }
 
     public Studente selectByMatricola(String matricola) {
-        return mappa.get(matricola);
+        if (matricola == null) {
+        	throw new RuntimeException("Matricola nulla");
+        }return mappa.get(matricola);
     }
    
     public List<Studente> selectAll() {
@@ -30,7 +35,9 @@ public class DAOStudenteMappa {
    
 
     public Studente delete(String matricola) {
-        return mappa.remove(matricola);
+    	if (matricola == null) {
+        	throw new RuntimeException("Matricola nulla");
+    	}return mappa.remove(matricola);
     }
     
 

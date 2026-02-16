@@ -2,7 +2,10 @@ package com.example.demo.controller;
 
 import java.util.List;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,8 +23,8 @@ public class StudenteController {
 	private StudenteService service = new StudenteService();
 	
 	@PostMapping(path="/registra", consumes = "application/json")
-	public boolean registra(@RequestBody Studente s) {
-		return service.registra(s);
+	public void registra(@RequestBody Studente s) {
+		service.registra(s);
 	}
 	
 	@GetMapping(path="/selectByMatricola/{matricola}")
@@ -40,8 +43,16 @@ public class StudenteController {
 	}
 	
 	@PatchMapping(path="/updateIndirizzo/{matricola}", consumes = "application/json")
-	public boolean updateIndirizzo(@PathVariable String matricola, String indirizzo) {
-		return service.updateIndirizzo(matricola, indirizzo);
+	public void updateIndirizzo(@PathVariable String matricola, String indirizzo) {
+		service.updateIndirizzo(matricola, indirizzo);
+	}
+	
+	@ExceptionHandler
+	public ResponseEntity<ErroreDTO>  handler(RuntimeException ex){
+		ErroreDTO errore = new ErroreDTO();
+		errore.setMessage(ex.getMessage());
+	
+		return new ResponseEntity<ErroreDTO>(errore, HttpStatus.BAD_REQUEST);
 	}
 
 }

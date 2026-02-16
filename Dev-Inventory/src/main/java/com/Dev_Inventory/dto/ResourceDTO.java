@@ -3,9 +3,10 @@ package com.Dev_Inventory.dto;
 import java.time.LocalDate;
 
 public class ResourceDTO {
-	private final String id;
-	private String nome, descrizione, url, categoria;
+	private String id, nome, descrizione, url, categoria;
 	private LocalDate dataInserimento;
+	
+	public ResourceDTO() {}
 	
 	public ResourceDTO(String id, String nome, String descrizione, String url, String categoria, LocalDate dataInserimento) {
 		this.id = id;
@@ -13,7 +14,11 @@ public class ResourceDTO {
 		this.setDescrizione(descrizione);
 		this.setUrl(url);
 		this.setCategoria(categoria);
-		this.dataInserimento = dataInserimento;
+		this.setDataInserimento(dataInserimento);
+	}
+	
+	public String getiId() {
+		return id;
 	}
 
 	public String getNome() {
@@ -55,5 +60,8 @@ public class ResourceDTO {
 	public LocalDate getDataInserimento() {
 		return dataInserimento;
 	}
+    public void setDataInserimento(LocalDate dataInserimento) { 
+    	this.dataInserimento = dataInserimento; 
+    	}
 	
 }

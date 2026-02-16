@@ -7,9 +7,6 @@ public class Prova {
 	public static void main(String[] args) {
 		System.out.println();
 
-		char carattere = '\\';
-		String s = "r";
-
 		boolean b = false;
 
 		System.out.println("Inserisci un numero intero: ");

@@ -7,8 +7,11 @@ import
 java.util.Map
 ;
 
+import org.springframework.stereotype.Repository;
+
 import com.spring.utenti.entity.Utente;
 
+@Repository
 public class DAOUtenteMappa {
 
 	private Map<Integer, Utente> mappa = new HashMap<>();

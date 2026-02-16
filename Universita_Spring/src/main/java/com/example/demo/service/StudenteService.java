@@ -9,8 +9,8 @@ public class StudenteService {
 	
 	private DAOStudenteMappa dao = new DAOStudenteMappa();
 	
-	public boolean registra(Studente s) {
-		return dao.insert(s);
+	public void registra(Studente s) {
+		dao.insert(s);
     }
 	
 
@@ -27,15 +27,15 @@ public class StudenteService {
         return dao.delete(matricola);
     }
 
-    public boolean updateIndirizzo(String matricola, String nuovoIndirizzo) {
+    public void updateIndirizzo(String matricola, String nuovoIndirizzo) {
         Studente s = dao.selectByMatricola(matricola);
         if (s == null) {
-            return false;
+            throw new RuntimeException("Errore");
         }
         
         s.setIndirizzo(nuovoIndirizzo);
 
         dao.delete(matricola);
-        return dao.insert(s);
+        dao.insert(s);
     }
 }

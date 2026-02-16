@@ -2,11 +2,17 @@ package com.spring.utenti.service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.spring.utenti.dao.DAOUtenteMappa;
 import com.spring.utenti.entity.Utente;
 
+@Service
 public class UtenteService {
-	private DAOUtenteMappa dao = new DAOUtenteMappa();
+	
+	@Autowired
+	private DAOUtenteMappa dao;
 	
 	public UtenteService() {
 		
