@@ -1,26 +1,22 @@
-# Eclipse
+# Eclipse metadata e file di sistema
 .metadata/
-*.log
-*.tmp
-*.bak
-*.swp
+.metadata_old/
 bin/
-
-# Java
+bin1/
 *.class
+
+# File di configurazione progetti Eclipse
+.project
+.classpath
+.settings/
+.factorypath
+
+# Maven (File temporanei e compilati)
+target/
 *.jar
 *.war
 *.ear
 
-# Maven
-target/
-.mvn/
-
-# IDE
-.idea/
-*.iml
-.vscode/
-
-# OS
+# Altri file di sistema
 .DS_Store
 Thumbs.db
