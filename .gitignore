@@ -2,8 +2,8 @@
 # IDE - Eclipse
 # =========================
 .metadata/
-.project
-.classpath
+*.classpath
+*.project
 .settings/
 .factorypath
 
@@ -11,6 +11,7 @@
 # Build - Maven
 # =========================
 **/target/
+**/bin/
 *.class
 
 # =========================
@@ -24,3 +25,9 @@
 # =========================
 .DS_Store
 Thumbs.db
+
+# =========================
+# IntelliJ / VSCode misc (opzionale)
+# =========================
+.idea/
+.vscode/
