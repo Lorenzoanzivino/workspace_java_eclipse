@@ -1,17 +1,16 @@
 package com.rubricaTelefonica.service;
 
 import java.util.List;
-
 import com.rubricaTelefonica.entity.Contatto;
+import com.rubricaTelefonica.entity.Rubrica;
 
-public abstract class ContattoService {
-	
-	public void registra(Contatto c);
-
-    public Contatto selectByMatricola(String id);
+public interface ContattoService {
     
-    public List<Rubrica> selectAll();
-   
-    public Rubrica proprietarioAnnoCreazione(String id);
-}
+    void registra(Contatto c);
+
+    Contatto selectByMatricola(String id);
+
+    List<Rubrica> selectAll();
+
+    Rubrica proprietarioAnnoCreazione(String id);
 }

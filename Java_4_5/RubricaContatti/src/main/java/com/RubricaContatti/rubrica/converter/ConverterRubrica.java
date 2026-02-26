@@ -25,13 +25,13 @@ public class ConverterRubrica {
 
 	public static List<Rubrica> listaRubricaDTOtoEntity(List<RubricaDTO> r){
 		List<Rubrica> rubriche = new ArrayList<>();
-		r.forEach(rubrica -> rubriche.add(rubricaDTOtoEntity(rubrica)));
+		r.forEach(rubricaDTO -> rubriche.add(rubricaDTOtoEntity(rubrica)));
 		return rubriche;
 	}
 	
 	public static List<RubricaDTO> listaRubricaEntityToDTO(List<Rubrica> r){
 		List<RubricaDTO> rubricheDTO = new ArrayList<>();
-		r.forEach(rubricaDTO -> rubricheDTO.add(rubricaEntitytoDTO(rubricaDTO)));
+		r.forEach(rubrica -> rubricheDTO.add(rubricaEntitytoDTO(rubricaDTO)));
 		return rubricheDTO;
 	}
 
