@@ -1,22 +1,26 @@
-# Eclipse metadata e file di sistema
+# =========================
+# IDE - Eclipse
+# =========================
 .metadata/
-.metadata_old/
-bin/
-bin1/
-*.class
-
-# File di configurazione progetti Eclipse
 .project
 .classpath
 .settings/
 .factorypath
 
-# Maven (File temporanei e compilati)
-target/
-*.jar
-*.war
-*.ear
+# =========================
+# Build - Maven
+# =========================
+**/target/
+*.class
 
-# Altri file di sistema
+# =========================
+# Environment
+# =========================
+.env
+*.env
+
+# =========================
+# OS
+# =========================
 .DS_Store
 Thumbs.db
