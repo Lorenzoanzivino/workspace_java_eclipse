@@ -1,4 +1,7 @@
 ├── .gitignore
+├── .idea
+│   ├── .gitignore
+│   └── workspace.xml
 ├── Java_1_3
 │   ├── .gitignore
 │   ├── RipassoEsame
@@ -875,205 +878,258 @@
 │   │               └── com
 │   │                   └── Ecommerce_Spring
 │   │                       └── EcommerceSpringApplicationTests.java
-│   ├── MM_quiz_Config_Server
-│   │   ├── .gitattributes
-│   │   ├── .gitignore
-│   │   ├── .mvn
-│   │   │   └── wrapper
-│   │   │       └── maven-wrapper.properties
-│   │   ├── Dockerfile
-│   │   ├── HELP.md
-│   │   ├── docker-compose.yaml
-│   │   ├── docker-composeFULL.yaml
-│   │   ├── mvnw
-│   │   ├── mvnw.cmd
-│   │   ├── pom.xml
-│   │   └── src
-│   │       ├── main
-│   │       │   ├── java
-│   │       │   │   └── it
-│   │       │   │       └── demo
-│   │       │   │           └── config
-│   │       │   │               └── MmQuizConfigServerApplication.java
-│   │       │   └── resources
-│   │       │       ├── application.yml
-│   │       │       └── config
-│   │       │           ├── MM-quiz-Autentication-Server-dev.properties
-│   │       │           ├── MM-quiz-Gateway-Server-dev.properties
-│   │       │           ├── MM-quiz-RD-Mongo-dev.properties
-│   │       │           ├── MM-quiz-RD-dev.properties
-│   │       │           ├── MM-quiz-Somma-dev.properties
-│   │       │           ├── MM-quiz-WR-Stream-dev.properties
-│   │       │           ├── MM-quiz-WR-dev.properties
-│   │       │           └── MM_quiz_Eureka_Server-dev.properties
-│   │       └── test
-│   │           ├── java
-│   │           │   └── it
-│   │           │       └── demo
-│   │           │           └── config
-│   │           │               └── MmQuizConfigServerApplicationTests.java
-│   │           └── resources
-│   ├── MM_quiz_Eureka_Server
-│   │   ├── .gitattributes
-│   │   ├── .gitignore
-│   │   ├── .mvn
-│   │   │   └── wrapper
-│   │   │       └── maven-wrapper.properties
-│   │   ├── Dockerfile
-│   │   ├── HELP.md
-│   │   ├── docker-compose.yaml
-│   │   ├── mvnw
-│   │   ├── mvnw.cmd
-│   │   ├── pom.xml
-│   │   └── src
-│   │       ├── main
-│   │       │   ├── java
-│   │       │   │   └── it
-│   │       │   │       └── demo
-│   │       │   │           └── config
-│   │       │   │               └── MmQuizEurekaServerApplication.java
-│   │       │   └── resources
-│   │       │       └── application.yml
-│   │       └── test
-│   │           ├── java
-│   │           │   └── it
-│   │           │       └── demo
-│   │           │           └── config
-│   │           │               └── MmQuizEurekaServerApplicationTests.java
-│   │           └── resources
-│   ├── MM_quiz_Gateway_Server
-│   │   ├── .gitattributes
-│   │   ├── .gitignore
-│   │   ├── .mvn
-│   │   │   └── wrapper
-│   │   │       └── maven-wrapper.properties
-│   │   ├── HELP.md
-│   │   ├── mvnw
-│   │   ├── mvnw.cmd
-│   │   ├── pom.xml
-│   │   └── src
-│   │       ├── main
-│   │       │   ├── java
-│   │       │   │   └── it
-│   │       │   │       └── demo
-│   │       │   │           └── config
-│   │       │   │               ├── MmQuizGatewayServerApplication.java
-│   │       │   │               └── filter
-│   │       │   │                   └── CorrelationIdFilter.java
-│   │       │   └── resources
-│   │       │       ├── application.properties
-│   │       │       └── gateway-server.properties
-│   │       └── test
-│   │           ├── java
-│   │           │   └── it
-│   │           │       └── demo
-│   │           │           └── config
-│   │           │               └── MmQuizGatewayServerApplicationTests.java
-│   │           └── resources
-│   ├── MM_quiz_RD
-│   │   ├── .gitattributes
-│   │   ├── .gitignore
-│   │   ├── .mvn
-│   │   │   └── wrapper
-│   │   │       └── maven-wrapper.properties
-│   │   ├── HELP.md
-│   │   ├── mvnw
-│   │   ├── mvnw.cmd
-│   │   ├── pom.xml
-│   │   └── src
-│   │       ├── main
-│   │       │   ├── java
-│   │       │   │   └── it
-│   │       │   │       └── demo
-│   │       │   │           └── quiz
-│   │       │   │               ├── MmQuizRdApplication.java
-│   │       │   │               ├── config
-│   │       │   │               │   ├── MessageConsumer.java
-│   │       │   │               │   └── RibbonConfiguration.java
-│   │       │   │               ├── controller
-│   │       │   │               │   ├── DomandaController.java
-│   │       │   │               │   └── GlobalHandlerException.java
-│   │       │   │               ├── dto
-│   │       │   │               │   ├── DomandaConRisposteDTO.java
-│   │       │   │               │   ├── DomandaDTO.java
-│   │       │   │               │   └── RispostaDTO.java
-│   │       │   │               ├── entity
-│   │       │   │               │   ├── Domanda.java
-│   │       │   │               │   ├── Risposta.java
-│   │       │   │               │   └── TipoDomanda.java
-│   │       │   │               ├── repository
-│   │       │   │               │   └── DomandaRepository.java
-│   │       │   │               ├── service
-│   │       │   │               │   ├── ConsumerStream.java
-│   │       │   │               │   ├── DomandaService.java
-│   │       │   │               │   ├── DomandaServiceImpl.java
-│   │       │   │               │   ├── QuestionConsumerStream.java
-│   │       │   │               │   └── client
-│   │       │   │               │       └── DomandaWRFeignClient.java
-│   │       │   │               └── utility
-│   │       │   │                   └── DomandaUtility.java
-│   │       │   └── resources
-│   │       │       ├── META-INF
-│   │       │       │   └── additional-spring-configuration-metadata.json
-│   │       │       ├── application.yml
-│   │       │       ├── static
-│   │       │       └── templates
-│   │       └── test
-│   │           ├── java
-│   │           │   └── it
-│   │           │       └── demo
-│   │           │           └── quiz
-│   │           │               └── MmQuizRdApplicationTests.java
-│   │           └── resources
-│   ├── MM_quiz_WR
-│   │   ├── .gitattributes
-│   │   ├── .gitignore
-│   │   ├── .mvn
-│   │   │   └── wrapper
-│   │   │       └── maven-wrapper.properties
-│   │   ├── Dockerfile
-│   │   ├── HELP.md
-│   │   ├── mvnw
-│   │   ├── mvnw.cmd
-│   │   ├── pom.xml
-│   │   └── src
-│   │       ├── main
-│   │       │   ├── java
-│   │       │   │   └── it
-│   │       │   │       └── demo
-│   │       │   │           └── quiz
-│   │       │   │               ├── MmQuizRdApplication.java
-│   │       │   │               ├── controller
-│   │       │   │               │   ├── DomandaController.java
-│   │       │   │               │   └── GlobalHandlerException.java
-│   │       │   │               ├── dto
-│   │       │   │               │   ├── DomandaConRisposteDTO.java
-│   │       │   │               │   ├── DomandaDTO.java
-│   │       │   │               │   └── RispostaDTO.java
-│   │       │   │               ├── entity
-│   │       │   │               │   ├── Domanda.java
-│   │       │   │               │   ├── Risposta.java
-│   │       │   │               │   └── TipoDomanda.java
-│   │       │   │               ├── repository
-│   │       │   │               │   └── DomandaRepository.java
-│   │       │   │               ├── service
-│   │       │   │               │   ├── DomandaService.java
-│   │       │   │               │   └── DomandaServiceImpl.java
-│   │       │   │               └── utility
-│   │       │   │                   └── DomandaUtility.java
-│   │       │   └── resources
-│   │       │       ├── META-INF
-│   │       │       │   └── additional-spring-configuration-metadata.json
-│   │       │       ├── application.yml
-│   │       │       ├── static
-│   │       │       └── templates
-│   │       └── test
-│   │           ├── java
-│   │           │   └── it
-│   │           │       └── demo
-│   │           │           └── quiz
-│   │           │               └── MmQuizRdApplicationTests.java
-│   │           └── resources
+│   ├── Microservizi
+│   │   ├── Catalogo_RD
+│   │   │   ├── .gitattributes
+│   │   │   ├── .gitignore
+│   │   │   ├── .mvn
+│   │   │   │   └── wrapper
+│   │   │   │       └── maven-wrapper.properties
+│   │   │   ├── HELP.md
+│   │   │   ├── mvnw
+│   │   │   ├── mvnw.cmd
+│   │   │   ├── pom.xml
+│   │   │   └── src
+│   │   │       ├── main
+│   │   │       │   ├── java
+│   │   │       │   │   └── com
+│   │   │       │   │       └── Catalogo_WR
+│   │   │       │   │           └── CatalogoRdApplication.java
+│   │   │       │   └── resources
+│   │   │       │       ├── application.yml
+│   │   │       │       ├── static
+│   │   │       │       └── templates
+│   │   │       └── test
+│   │   │           └── java
+│   │   │               └── com
+│   │   │                   └── Catalogo_WR
+│   │   │                       └── CatalogoRdApplicationTests.java
+│   │   ├── Catalogo_WR
+│   │   │   ├── .gitattributes
+│   │   │   ├── .gitignore
+│   │   │   ├── .mvn
+│   │   │   │   └── wrapper
+│   │   │   │       └── maven-wrapper.properties
+│   │   │   ├── HELP.md
+│   │   │   ├── mvnw
+│   │   │   ├── mvnw.cmd
+│   │   │   ├── pom.xml
+│   │   │   └── src
+│   │   │       ├── main
+│   │   │       │   ├── java
+│   │   │       │   │   └── com
+│   │   │       │   │       └── Catalogo_WR
+│   │   │       │   │           └── CatalogoWrApplication.java
+│   │   │       │   └── resources
+│   │   │       │       ├── application.yml
+│   │   │       │       ├── static
+│   │   │       │       └── templates
+│   │   │       └── test
+│   │   │           └── java
+│   │   │               └── com
+│   │   │                   └── Catalogo_WR
+│   │   │                       └── CatalogoWrApplicationTests.java
+│   │   ├── MM_quiz_Config_Server
+│   │   │   ├── .gitattributes
+│   │   │   ├── .gitignore
+│   │   │   ├── .mvn
+│   │   │   │   └── wrapper
+│   │   │   │       └── maven-wrapper.properties
+│   │   │   ├── Dockerfile
+│   │   │   ├── HELP.md
+│   │   │   ├── docker-compose.yaml
+│   │   │   ├── docker-composeFULL.yaml
+│   │   │   ├── mvnw
+│   │   │   ├── mvnw.cmd
+│   │   │   ├── pom.xml
+│   │   │   └── src
+│   │   │       ├── main
+│   │   │       │   ├── java
+│   │   │       │   │   └── it
+│   │   │       │   │       └── demo
+│   │   │       │   │           └── config
+│   │   │       │   │               └── MmQuizConfigServerApplication.java
+│   │   │       │   └── resources
+│   │   │       │       ├── application.yml
+│   │   │       │       └── config
+│   │   │       │           ├── Catalogo-RD-dev2.properties
+│   │   │       │           ├── Catalogo-WR-dev2.properties
+│   │   │       │           ├── MM-quiz-Autentication-Server-dev.properties
+│   │   │       │           ├── MM-quiz-Gateway-Server-dev.properties
+│   │   │       │           ├── MM-quiz-RD-Mongo-dev.properties
+│   │   │       │           ├── MM-quiz-RD-dev.properties
+│   │   │       │           ├── MM-quiz-Somma-dev.properties
+│   │   │       │           ├── MM-quiz-WR-Stream-dev.properties
+│   │   │       │           ├── MM-quiz-WR-dev.properties
+│   │   │       │           └── MM_quiz_Eureka_Server-dev.properties
+│   │   │       └── test
+│   │   │           ├── java
+│   │   │           │   └── it
+│   │   │           │       └── demo
+│   │   │           │           └── config
+│   │   │           │               └── MmQuizConfigServerApplicationTests.java
+│   │   │           └── resources
+│   │   ├── MM_quiz_Eureka_Server
+│   │   │   ├── .gitattributes
+│   │   │   ├── .gitignore
+│   │   │   ├── .mvn
+│   │   │   │   └── wrapper
+│   │   │   │       └── maven-wrapper.properties
+│   │   │   ├── Dockerfile
+│   │   │   ├── HELP.md
+│   │   │   ├── docker-compose.yaml
+│   │   │   ├── mvnw
+│   │   │   ├── mvnw.cmd
+│   │   │   ├── pom.xml
+│   │   │   └── src
+│   │   │       ├── main
+│   │   │       │   ├── java
+│   │   │       │   │   └── it
+│   │   │       │   │       └── demo
+│   │   │       │   │           └── config
+│   │   │       │   │               └── MmQuizEurekaServerApplication.java
+│   │   │       │   └── resources
+│   │   │       │       └── application.yml
+│   │   │       └── test
+│   │   │           ├── java
+│   │   │           │   └── it
+│   │   │           │       └── demo
+│   │   │           │           └── config
+│   │   │           │               └── MmQuizEurekaServerApplicationTests.java
+│   │   │           └── resources
+│   │   ├── MM_quiz_Gateway_Server
+│   │   │   ├── .gitattributes
+│   │   │   ├── .gitignore
+│   │   │   ├── .mvn
+│   │   │   │   └── wrapper
+│   │   │   │       └── maven-wrapper.properties
+│   │   │   ├── HELP.md
+│   │   │   ├── mvnw
+│   │   │   ├── mvnw.cmd
+│   │   │   ├── pom.xml
+│   │   │   └── src
+│   │   │       ├── main
+│   │   │       │   ├── java
+│   │   │       │   │   └── it
+│   │   │       │   │       └── demo
+│   │   │       │   │           └── config
+│   │   │       │   │               ├── MmQuizGatewayServerApplication.java
+│   │   │       │   │               └── filter
+│   │   │       │   │                   └── CorrelationIdFilter.java
+│   │   │       │   └── resources
+│   │   │       │       ├── application.properties
+│   │   │       │       └── gateway-server.properties
+│   │   │       └── test
+│   │   │           ├── java
+│   │   │           │   └── it
+│   │   │           │       └── demo
+│   │   │           │           └── config
+│   │   │           │               └── MmQuizGatewayServerApplicationTests.java
+│   │   │           └── resources
+│   │   ├── MM_quiz_RD
+│   │   │   ├── .gitattributes
+│   │   │   ├── .gitignore
+│   │   │   ├── .mvn
+│   │   │   │   └── wrapper
+│   │   │   │       └── maven-wrapper.properties
+│   │   │   ├── HELP.md
+│   │   │   ├── mvnw
+│   │   │   ├── mvnw.cmd
+│   │   │   ├── pom.xml
+│   │   │   └── src
+│   │   │       ├── main
+│   │   │       │   ├── java
+│   │   │       │   │   └── it
+│   │   │       │   │       └── demo
+│   │   │       │   │           └── quiz
+│   │   │       │   │               ├── MmQuizRdApplication.java
+│   │   │       │   │               ├── config
+│   │   │       │   │               │   ├── MessageConsumer.java
+│   │   │       │   │               │   └── RibbonConfiguration.java
+│   │   │       │   │               ├── controller
+│   │   │       │   │               │   ├── DomandaController.java
+│   │   │       │   │               │   └── GlobalHandlerException.java
+│   │   │       │   │               ├── dto
+│   │   │       │   │               │   ├── DomandaConRisposteDTO.java
+│   │   │       │   │               │   ├── DomandaDTO.java
+│   │   │       │   │               │   └── RispostaDTO.java
+│   │   │       │   │               ├── entity
+│   │   │       │   │               │   ├── Domanda.java
+│   │   │       │   │               │   ├── Risposta.java
+│   │   │       │   │               │   └── TipoDomanda.java
+│   │   │       │   │               ├── repository
+│   │   │       │   │               │   └── DomandaRepository.java
+│   │   │       │   │               ├── service
+│   │   │       │   │               │   ├── ConsumerStream.java
+│   │   │       │   │               │   ├── DomandaService.java
+│   │   │       │   │               │   ├── DomandaServiceImpl.java
+│   │   │       │   │               │   ├── QuestionConsumerStream.java
+│   │   │       │   │               │   └── client
+│   │   │       │   │               │       └── DomandaWRFeignClient.java
+│   │   │       │   │               └── utility
+│   │   │       │   │                   └── DomandaUtility.java
+│   │   │       │   └── resources
+│   │   │       │       ├── META-INF
+│   │   │       │       │   └── additional-spring-configuration-metadata.json
+│   │   │       │       ├── application.yml
+│   │   │       │       ├── static
+│   │   │       │       └── templates
+│   │   │       └── test
+│   │   │           ├── java
+│   │   │           │   └── it
+│   │   │           │       └── demo
+│   │   │           │           └── quiz
+│   │   │           │               └── MmQuizRdApplicationTests.java
+│   │   │           └── resources
+│   │   └── MM_quiz_WR
+│   │       ├── .gitattributes
+│   │       ├── .gitignore
+│   │       ├── .mvn
+│   │       │   └── wrapper
+│   │       │       └── maven-wrapper.properties
+│   │       ├── Dockerfile
+│   │       ├── HELP.md
+│   │       ├── mvnw
+│   │       ├── mvnw.cmd
+│   │       ├── pom.xml
+│   │       └── src
+│   │           ├── main
+│   │           │   ├── java
+│   │           │   │   └── it
+│   │           │   │       └── demo
+│   │           │   │           └── quiz
+│   │           │   │               ├── MmQuizRdApplication.java
+│   │           │   │               ├── controller
+│   │           │   │               │   ├── DomandaController.java
+│   │           │   │               │   └── GlobalHandlerException.java
+│   │           │   │               ├── dto
+│   │           │   │               │   ├── DomandaConRisposteDTO.java
+│   │           │   │               │   ├── DomandaDTO.java
+│   │           │   │               │   └── RispostaDTO.java
+│   │           │   │               ├── entity
+│   │           │   │               │   ├── Domanda.java
+│   │           │   │               │   ├── Risposta.java
+│   │           │   │               │   └── TipoDomanda.java
+│   │           │   │               ├── repository
+│   │           │   │               │   └── DomandaRepository.java
+│   │           │   │               ├── service
+│   │           │   │               │   ├── DomandaService.java
+│   │           │   │               │   └── DomandaServiceImpl.java
+│   │           │   │               └── utility
+│   │           │   │                   └── DomandaUtility.java
+│   │           │   └── resources
+│   │           │       ├── META-INF
+│   │           │       │   └── additional-spring-configuration-metadata.json
+│   │           │       ├── application.yml
+│   │           │       ├── static
+│   │           │       └── templates
+│   │           └── test
+│   │               ├── java
+│   │               │   └── it
+│   │               │       └── demo
+│   │               │           └── quiz
+│   │               │               └── MmQuizRdApplicationTests.java
+│   │               └── resources
 │   ├── Universita_Spring
 │   │   ├── .gitattributes
 │   │   ├── .gitignore
