@@ -1,0 +1,21 @@
+{
+  "name": "workspace_java_eclipse",
+  "version": "1.0.0",
+  "description": "Questo repository contiene un workspace Eclipse dedicato a progetti Java didattici e personali. Include applicazioni, esercizi e progetti Spring, organizzati in cartelle con `src` e package tematici. La struttura è pensata per esercizi, lezioni e sviluppo continuo, pronta per il versionamento su GitHub.",
+  "main": "index.js",
+  "scripts": {
+    "tree": "node tree.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lorenzoanzivino/workspace_java_eclipse.git"
+  },
+  "keywords": ["java", "eclipse", "workspace", "projects", "learning"],
+  "author": "Lorenzo Anzivino",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Lorenzoanzivino/workspace_java_eclipse/issues"
+  },
+  "homepage": "https://github.com/Lorenzoanzivino/workspace_java_eclipse#readme"
+}
