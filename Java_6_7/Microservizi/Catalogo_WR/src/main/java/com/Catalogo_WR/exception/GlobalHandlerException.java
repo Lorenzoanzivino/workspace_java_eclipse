@@ -1,4 +1,4 @@
-package com.Catalogo_RD.exception;
+package com.Catalogo_WR.exception;
 
 import org.springframework.dao.OptimisticLockingFailureException;
 import org.springframework.http.HttpStatus;
