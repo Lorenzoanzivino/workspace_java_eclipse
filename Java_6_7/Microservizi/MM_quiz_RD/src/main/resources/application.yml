@@ -8,15 +8,20 @@ spring:
   config:
     import: optional:configserver:http://localhost:8071 
 
-#  cloud:
-#    stream:
-#      bindings:
-#        myConsumer-in-0:
-#          destination: my-topic
-#          group: consumer
-#      kafka:
-#        binder:
-#          brokers: localhost:9092
+spring:
+  cloud:
+    stream:
+      function:
+        definition: quizConsumer;quizProducer # Registra qui i tuoi Bean Java
+      bindings:
+        quizProducer-out-0: # Nome logico standard: <functionName>-out-<index>
+          destination: quiz-topic
+        quizConsumer-in-0:  # Nome logico standard: <functionName>-in-<index>
+          destination: quiz-topic
+          group: quiz-group-rd
+      kafka:
+        binder:
+          brokers: localhost:9092 # Deve corrispondere alla porta nel docker-compose
 
 management:
   endpoint:

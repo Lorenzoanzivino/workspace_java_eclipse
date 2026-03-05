@@ -1,4 +1,4 @@
-package com.Catalogo_WR;
+package com.Catalogo_RD;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
