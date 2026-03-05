@@ -2,62 +2,92 @@ package com.Catalogo_WR.service;
 
 import com.Catalogo_WR.dto.ProdottoDTO;
 import com.Catalogo_WR.entity.Prodotto;
+import com.Catalogo_WR.exception.IdNonTrovatoException;
+import com.Catalogo_WR.exception.IdTrovatoException;
 import com.Catalogo_WR.repository.ProdottoRepository;
 import com.Catalogo_WR.utility.ProdottoUtilityConverter;
+import com.Catalogo_WR.service.client.ProdottoRdClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
-@Transactional // Fondamentale per il lato Write
+@Transactional
 public class ProdottoServiceImpl implements ProdottoService {
 
     private final ProdottoRepository prodottoRepository;
+    private final ProdottoRdClient prodottoRdClient;
 
     @Autowired
-    public ProdottoServiceImpl(ProdottoRepository prodottoRepository) {
+    public ProdottoServiceImpl(ProdottoRepository prodottoRepository, ProdottoRdClient prodottoRdClient) {
         this.prodottoRepository = prodottoRepository;
+        this.prodottoRdClient = prodottoRdClient;
     }
 
     @Override
     public ProdottoDTO create(ProdottoDTO prodottoDTO) {
-        // Convertiamo il DTO in Entity
+        // Verifica se l'ID è già presente per evitare duplicati accidentali
+        if (prodottoDTO.id() > 0 && prodottoRepository.existsById(prodottoDTO.id())) {
+            throw new IdTrovatoException("Impossibile creare: Prodotto con ID " + prodottoDTO.id() + " già esistente.");
+        }
+
         Prodotto prodotto = ProdottoUtilityConverter.toEntity(prodottoDTO);
-
-        // Per sicurezza, resettiamo l'ID a 0 per forzare la creazione di un nuovo record
         prodotto.setId(0);
-
-        // Salviamo sul Master
         Prodotto salvato = prodottoRepository.save(prodotto);
-
-        // Ritorniamo il DTO con l'ID appena generato
         return ProdottoUtilityConverter.toDTO(salvato);
     }
 
     @Override
+    public ProdottoDTO cerca(int id) {
+        return prodottoRepository.findById(id)
+                .map(ProdottoUtilityConverter::toDTO)
+                .orElseThrow(() -> new IdNonTrovatoException("Prodotto con ID " + id + " non trovato."));
+    }
+
+    @Override
+    public int cercaVersione(int id) {
+        return prodottoRepository.findById(id)
+                .map(Prodotto::getVersion)
+                .orElseThrow(() -> new IdNonTrovatoException("ID " + id + " non trovato per recupero versione."));
+    }
+
+    @Override
+    public List<ProdottoDTO> cercaTutti() {
+        return ProdottoUtilityConverter.toDTOList(prodottoRepository.findAll());
+    }
+
+    @Override
     public ProdottoDTO update(int id, ProdottoDTO prodottoDTO) {
-        // Verifichiamo se il prodotto esiste prima di procedere
-        if (!prodottoRepository.existsById(id)) {
-            throw new RuntimeException("Impossibile aggiornare: Prodotto con ID " + id + " non trovato.");
+        // 1. VERIFICA ESTERNA: Chiediamo al modulo RD lo stato attuale per validare la versione
+        try {
+            ProdottoDTO statoAttualeRD = prodottoRdClient.getProdottoById(id);
+
+            if (prodottoDTO.version() != null && !prodottoDTO.version().equals(statoAttualeRD.version())) {
+                throw new IdTrovatoException("Conflitto di versione rilevato dal modulo di lettura.");
+            }
+        } catch (Exception e) {
+            // Se il client fallisce (es. 404), lanciamo l'eccezione specifica
+            throw new IdNonTrovatoException("Il prodotto con ID " + id + " non è presente o sincronizzato nel modulo RD.");
         }
 
-        // Convertiamo il DTO in Entity (che contiene già la 'version' per il lock ottimistico)
-        Prodotto prodottoDaAggiornare = ProdottoUtilityConverter.toEntity(prodottoDTO);
+        // 2. VERIFICA LOCALE: Controllo sul database Master
+        if (!prodottoRepository.existsById(id)) {
+            throw new IdNonTrovatoException("Aggiornamento fallito: ID " + id + " non trovato sul database Master.");
+        }
 
-        // Ci assicuriamo che l'ID sia quello corretto passato nell'URL
+        Prodotto prodottoDaAggiornare = ProdottoUtilityConverter.toEntity(prodottoDTO);
         prodottoDaAggiornare.setId(id);
 
-        // Il metodo save gestirà il Lock Ottimistico tramite il campo @Version
-        // Se la versione nel DB è diversa da quella nel DTO, scatta l'eccezione
         Prodotto aggiornato = prodottoRepository.save(prodottoDaAggiornare);
-
         return ProdottoUtilityConverter.toDTO(aggiornato);
     }
 
     @Override
     public void delete(int id) {
         if (!prodottoRepository.existsById(id)) {
-            throw new RuntimeException("Impossibile eliminare: Prodotto con ID " + id + " non trovato.");
+            throw new IdNonTrovatoException("Eliminazione fallita: Prodotto con ID " + id + " non trovato.");
         }
         prodottoRepository.deleteById(id);
     }

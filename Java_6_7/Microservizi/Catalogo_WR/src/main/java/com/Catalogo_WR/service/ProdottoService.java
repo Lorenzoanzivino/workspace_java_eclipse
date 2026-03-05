@@ -2,21 +2,19 @@ package com.Catalogo_WR.service;
 
 import com.Catalogo_WR.dto.ProdottoDTO;
 
+import java.util.List;
+
 public interface ProdottoService {
 
-    /**
-     * Crea un nuovo prodotto nel database Master.
-     */
     ProdottoDTO create(ProdottoDTO prodottoDTO);
 
-    /**
-     * Aggiorna un prodotto esistente.
-     * Il controllo della versione (@Version) verrà gestito dall'implementazione.
-     */
+    ProdottoDTO cerca(int id);
+
+    int cercaVersione(int id);
+
+    List<ProdottoDTO> cercaTutti();
+
     ProdottoDTO update(int id, ProdottoDTO prodottoDTO);
 
-    /**
-     * Elimina un prodotto tramite ID.
-     */
     void delete(int id);
 }
