@@ -7,10 +7,20 @@ spring:
     import: optional:configserver:http://localhost:8071 
     
   profiles:
-    active: dev 
+    active: dev
+
+  cloud:
+    stream:
+      bindings:
+        myConsumer-in-0:
+          destination: my-topic
+          group: consumer
+      kafka:
+        binder:
+          brokers: localhost:9092
 
 
-#attiva l'end point dell'actuator per il refresh delle proprietà di configurazione
+#attiva l'end point dell'actuator per il refresh delle proprietï¿½ di configurazione
 #lette dal server di configurazione
 management:
   endpoints:
